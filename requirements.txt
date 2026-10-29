@@ -1,0 +1,13 @@
+# Flask Web Framework
+Flask==3.0.3
+
+# Environment Variables loader
+python-dotenv==1.0.1
+
+# Google Gemini API & Generative AI
+google-generativeai==0.8.3
+
+# LangGraph & LangChain StateGraph Agent Framework
+langgraph>=1.2.0
+langchain-core>=1.7.0
+langchain-google-genai>=4.4.0

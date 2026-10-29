@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constitutional Law AI Agent | LangGraph</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Google Fonts for modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Sleek, Clean Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-icon">🏛️</div>
+                <div class="header-titles">
+                    <h2>Constitution AI</h2>
+                    <span class="badge" id="engine-badge">Online</span>
+                </div>
+            </div>
+
+            <button id="new-chat-btn" class="primary-action-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <span>New Conversation</span>
+            </button>
+
+            <!-- Previous Chats (Saved History) Section -->
+            <div class="sidebar-section history-section">
+                <div class="section-header-row">
+                    <h3>💬 Previous Chats</h3>
+                    <button id="clear-all-chats-btn" class="text-btn" title="Clear all chat history">Clear All</button>
+                </div>
+                <div class="chat-history-list" id="chat-history-list">
+                    <!-- Populated dynamically by JavaScript -->
+                    <div class="empty-history">No previous chats yet</div>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <small>Constitutional Law AI · LangGraph</small>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-container">
+            <header class="chat-header">
+                <div>
+                    <div class="header-badge-row">
+                        <h1>Constitutional Law AI Agent</h1>
+                        <span class="pill-badge" id="model-pill">Legal AI Agent</span>
+                        <span class="pill-badge stream-pill">SSE Streaming</span>
+                    </div>
+                    <p class="subtitle">Real-time visibility into agent reasoning, tool execution, and legal synthesis</p>
+                </div>
+                <div class="header-actions">
+                    <button id="clear-btn" class="secondary-btn" title="Clear chat display">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="3 6 5 6 21 6"></polyline>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        </svg>
+                        <span>Clear</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Chat messages container -->
+            <div class="messages-container" id="messages-container">
+                <!-- Welcome Message from Agent -->
+                <div class="message-wrapper bot">
+                    <div class="avatar">🏛️</div>
+                    <div class="message-bubble">
+                        <div class="message-content">
+                            <p><strong>Namaste!</strong> I am your specialized <strong>Constitutional Law AI Agent</strong>.</p>
+                            <p>Powered by <strong>LangGraph</strong>, I execute a structured legal reasoning pipeline: searching verified statutory texts, fetching landmark Supreme Court case laws, and analyzing constitutional doctrines in real time.</p>
+                            <p>💡 <em>Watch my step-by-step thinking box at each stage: searching, fetching data, executing tools, and analyzing results!</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick constitutional sample prompts -->
+            <div class="quick-prompts">
+                <button class="chip" onclick="sendQuickPrompt('What is Article 21 and how does it protect the Right to Privacy?')">⚖️ Article 21 & Privacy</button>
+                <button class="chip" onclick="sendQuickPrompt('Explain the Kesavananda Bharati case and the Basic Structure Doctrine.')">🏛️ Kesavananda Bharati Case</button>
+                <button class="chip" onclick="sendQuickPrompt('What are the 5 Constitutional Writs under Article 32 and 226?')">🛡️ 5 Constitutional Writs</button>
+                <button class="chip" onclick="sendQuickPrompt('Explain the Preamble and what changed in the 42nd Amendment.')">📜 Preamble & 42nd Amendment</button>
+                <button class="chip" onclick="sendQuickPrompt('What is the Golden Triangle of Fundamental Rights (Articles 14, 19, 21)?')">🔺 Golden Triangle Rights</button>
+            </div>
+
+            <!-- Chat input bar -->
+            <form id="chat-form" class="chat-input-bar">
+                <div class="input-wrapper">
+                    <input 
+                        type="text" 
+                        id="user-input" 
+                        placeholder="Ask any constitutional question, article, landmark case, or writ..." 
+                        autocomplete="off"
+                        required
+                    />
+                </div>
+                <button type="submit" id="send-btn" class="send-btn">
+                    <span>Send</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </form>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
